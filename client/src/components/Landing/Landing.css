@@ -1,0 +1,29 @@
+.LandingContainer{
+ background-image: url("../foto.jpg");
+ height: 680px;
+ margin-top: -20px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+}
+.TextoLanding{
+    color:black;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: -120px;
+    padding-top: 20px;
+    padding-left: 0px;
+}
+.NavLink{
+    height: 100px;
+    width: 300px;
+    color:black;
+    text-decoration: none;
+    font-size: 40px;
+    margin-top: -30px;
+}
+.NavLink:hover{
+    background-color: red
+}
