@@ -1,0 +1,31 @@
+.ActivityContainer{
+    background-color:#423F3E;
+    height:660px
+}
+.Title{
+    color:white
+}
+.Form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.InputNombre{
+    width: 100px;
+}
+.InputDificultad{
+    width: 100px;
+}
+.InputDuracion{
+    width: 100px;
+}
+.InputTemporada{
+    width: 100px;
+}
+.InputPaises{
+    width: 100px;
+    margin-bottom: 30px;
+}
+.label{
+    color:white
+}

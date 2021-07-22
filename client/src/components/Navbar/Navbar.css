@@ -1,0 +1,15 @@
+.NavbarContainer{
+    background-color: #171010;
+    margin-bottom: 50px;
+    margin-top: -20px
+}
+.title{
+    color: white;
+    margin-bottom: 20px
+}
+.NavLink{
+    text-decoration: none;
+    color:white;
+    
+
+}

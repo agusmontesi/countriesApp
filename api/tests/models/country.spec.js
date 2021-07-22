@@ -17,6 +17,15 @@ describe('Country model', () => {
       it('should work when its a valid name', () => {
         Country.create({ name: 'Argentina' });
       });
+      it('should work when there is no area or population data', () => {
+        Country.create({area:"", poblacion:""})
+      });
+      it('should throw an error if id have more than three characters or is null', ()=>{
+        Country.create({ id: "ARGE", name: 'Argentina' })
+        .then(() => done(new Error('The ID is invalid')))
+        Country.create({ id: "", name: 'Argentina' })
+        .then(() => done(new Error('The ID is invalid')))
+      })
     });
   });
 });

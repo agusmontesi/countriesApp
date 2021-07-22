@@ -34,6 +34,7 @@ conn.sync({ force: true }).then(() => {
             capital: element.capital,
             flag: element.flag,
             continent: element.region,
+            subregion: element.subregion,
             area: element.area,
             population: element.population,
         }

@@ -20,12 +20,9 @@ export function Input(props) {
       props.getCountries(input.pais)
     }
     else {
-      alert("You must enter a valid country name!")
+      alert("Busque por pais!")
     }
-
-
   }
-
 	return(
 	<div className="cnt">
 		<form onSubmit={(e) => handleSubmit(e)}>
@@ -34,7 +31,7 @@ export function Input(props) {
 		type="text"
 		placeholder="Search Country..."
 		name="pais"
-		value={input.pais}
+		value={input.pais }
 		onChange={(e) => handleChange(e)}
 
 		/>

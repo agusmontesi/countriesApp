@@ -1,0 +1,40 @@
+.SuperContainer{
+    margin-top: px;
+   background-color: #423F3E;
+   height: auto
+}
+.Container{
+    background-color: #171010;
+    height: 800px;
+    padding-top: 40px;
+    margin: auto;
+    width:400px
+}
+.Flag{
+    width: 200px;
+    margin-top: 20px
+}
+.NavLink{
+    margin-top: 1000px;
+    text-decoration: none;
+    margin-bottom: 30px;
+    background-color: #423F3E;
+}
+.conj{
+    color:white
+}
+.value{
+    color: #C84B31;
+}
+.InfoActivities{
+    background-color: #30475E;
+    width: 850px;
+    
+}
+.SUPERMILCONTAINER{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;   
+    width: 800px;
+    margin-left: -200px;
+}

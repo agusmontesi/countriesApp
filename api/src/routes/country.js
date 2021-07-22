@@ -9,10 +9,17 @@ server.get("/", async (req, res) =>{
     const name = req.query.name;
         if (name) {
             //Guardo en una variable y uso el endpoint de buscar paises por nombre:
-            const countriApi = await axios.get(`https://restcountries.eu/rest/v2/name/${name}`)
+            const countriApi = await Country.findAll({
+                where: {
+                    name: {
+                        [Op.iLike]: "%" + name + "%"
+                    }
+                },
+            });
             //Verifico si me llega data, la mando:
+            console.log(countriApi)
             if (countriApi) {
-                res.send(countriApi.data)
+                res.send(countriApi)
             } else {
             //sino mando un error
                 res.send("No se ha podido encontrar el pais indicado")
@@ -22,9 +29,10 @@ server.get("/", async (req, res) =>{
             const data = await Country.findAll();
             //Solo traigo las primeras 10:
              const cut = data.slice(0,10)
-            res.send(cut)
+            res.send(data)
          }
 });
+
 
 
 //Obtengo el detalle de un pais en particular: 
@@ -35,21 +43,10 @@ server.get("/:id", async (req, res) => {
     const api = await axios.get(`https://restcountries.eu/rest/v2/alpha/${id}`);
     try {
         //ESTO ESTA AUN SIN RESOLVER!!!!!!!!!!!!!!!!!!!
-        const activities = await Activity.findByPk();
-        //Creo un objeto con las propiedades que quiero que SOLO me traiga de la api
-         const city = {
-            img: api.data.flag,
-            name: api.data.name,
-            id: api.data.alpha3Code,
-            continent: api.data.region,
-            capital: api.data.capital,
-            subregion: api.data.subregion,
-            area: api.data.area,
-            population: api.data.population,
-            turistAct: null
-        };
-        //Devuelvo ese objeto y lo mando:
-        res.send(city);
+    const actividad = await Country.findByPk(id.toUpperCase(), {
+        include: Activity
+    })
+        res.send(actividad);
         //Sino me tira el error y me lo consologuea:
     } catch (error) {
         console.log(error)
