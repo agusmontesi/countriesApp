@@ -49,11 +49,10 @@ if (action.type === FETCH_ACTIVITIES){
         activities: action.payload
     }
 }
-if(action.type === CHANGE_ACTIVITIES){
+if (action.type === CHANGE_ACTIVITIES){
     return{
         ...state,
-        activities: state.activities.filter((e) => e.season == action.payload),
-        
+        countries: action.payload
     }
 }
 

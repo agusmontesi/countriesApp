@@ -4,6 +4,7 @@ import { connect, useDispatch } from "react-redux"
 import {Link} from "react-router-dom"
 import { getCountries } from "../../Actions/actions";
 
+
 const Countries = (props) => {
     const [numeroPagina, setNumeroPagina] = useState(1);
 
@@ -29,7 +30,8 @@ const Countries = (props) => {
                         <h3 className="continent">{c.continent}</h3>
                     </div>)}
                     <div className="paginationBtns">
-					<button onClick={() => setNumeroPagina(numeroPagina - 1)}>backward</button>
+					<button disabled={numeroPagina <= 1 }onClick={() =>
+                         setNumeroPagina(numeroPagina - 1)}>backward</button>
 			        <button>{numeroPagina}</button>
 			        <button onClick={() => setNumeroPagina(numeroPagina + 1)}>forward</button>
 		        </div>

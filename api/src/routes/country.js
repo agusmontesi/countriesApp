@@ -24,11 +24,21 @@ server.get("/", async (req, res) =>{
             //sino mando un error
                 res.send("No se ha podido encontrar el pais indicado")
             }
+        }  else if (req.query.activity){
+            const actividad = req.query.activity
+            const fActivity = await Country.findAll({
+                include:{
+                    model: Activity,
+                    where: {
+                        name: actividad
+                    },
+                    required: true
+                }
+            })
+            return res.json(fActivity)
         } else {
             //Busco toda la data desde la db y la guardo en la variable data:
             const data = await Country.findAll();
-            //Solo traigo las primeras 10:
-             const cut = data.slice(0,10)
             res.send(data)
          }
 });
@@ -39,10 +49,8 @@ server.get("/", async (req, res) =>{
 server.get("/:id", async (req, res) => {
     //Guardo en una variable el params:
     const {id} = req.params;
-    //Me traigo los datos de la api y la guardo en la varibale api:
-    const api = await axios.get(`https://restcountries.eu/rest/v2/alpha/${id}`);
+    //Me traigo los datos de la base de datos
     try {
-        //ESTO ESTA AUN SIN RESOLVER!!!!!!!!!!!!!!!!!!!
     const actividad = await Country.findByPk(id.toUpperCase(), {
         include: Activity
     })

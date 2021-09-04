@@ -16,13 +16,13 @@ const About = (props) => {
         <div className="Container">
             <img className="Flag" src={props.countryDetail.flag} alt="No se pudo encontrar la img"></img>
             <h1 className="conj">{props.countryDetail.name}</h1>
-            <h3 className="conj">{props.countryDetail.name}</h3>
+            <h3 className="conj">{props.countryDetail.id}</h3>
             <h3 className="conj">Capital: {props.countryDetail.capital}</h3>
-            <h3 className="conj">Continent: {props.countryDetail.continent}</h3>
+            <h3 className="conj">Continente: {props.countryDetail.continent}</h3>
             <h3 className="conj">Subregion: {props.countryDetail.subregion}</h3>
             <h3 className="conj">Area: {props.countryDetail.area}</h3>
-            <h3 className="conj">Population: {props.countryDetail.population}</h3> 
-            <h3 className="conj">Turist Activities:</h3>
+            <h3 className="conj">Poblacion: {props.countryDetail.population}</h3> 
+            <h3 className="conj">Actividades Turisticas:</h3>
             <div className="SUPERMILCONTAINER">
             {
             props.countryDetail.activities?.map(e => 

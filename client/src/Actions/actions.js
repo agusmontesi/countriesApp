@@ -131,10 +131,15 @@ export const FetchActivities = () => {
     }
 }
 
-export const changeActivities = (value) => {
-    return function (dispatch) {
-        dispatch({type: CHANGE_ACTIVITIES, payload: value})
-    }}
+export function changeActivities(actividad){
+    console.log(actividad)
+	return function(dispatch){
+		 axios.get(`http://localhost:3001/countries?activity=${actividad}`)
+		.then(response => {
+			dispatch({type: CHANGE_ACTIVITIES, payload: response.data})
+		})
+	}
+}
 
 
 

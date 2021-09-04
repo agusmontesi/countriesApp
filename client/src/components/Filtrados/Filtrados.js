@@ -1,16 +1,19 @@
 import React, {useEffect} from "react";
-import {useDispatch, connect} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import {filterCont,getCountries, changeActivities, FetchActivities } from "../../Actions/actions"
 import "./Filtrados.css"
 
 
 
-const Filtrados = (props) => {
+const Filtrados = () => {
 const dispatch = useDispatch();
+
+const actividades= useSelector((state) => state.activities)
+console.log(actividades)
+
 
     function handleSelectAct(e) {
         e.preventDefault();
-        console.log(e.target.value)
         dispatch(changeActivities(e.target.value))
   }
 
@@ -18,26 +21,29 @@ const dispatch = useDispatch();
         e.preventDefault()
         dispatch(filterCont(e.target.value))
     }
-    useEffect(async() => {
-        await dispatch(FetchActivities());
-        await dispatch(getCountries());
+
+
+    useEffect(() => {
+        dispatch(FetchActivities());
+         dispatch(getCountries());
     }, [])
+
     return (
         <div className="FiltradosContainer">
-            <select name="Actividades" className="SelectStation" onChange={handleSelectAct}>
-                <option value="">Select Station:</option>
-                <option value="Winter">Winter</option>
-                <option value="Summer">Summer</option>
-                <option value="Spring">Spring</option>
-                <option value="Autumn">Autumn</option>
-            </select>
+            <select className="filtroActividades" name="actividades" onChange={(e) => handleSelectAct(e)}>
+	  			<option value="">Filtrar por Actividad Turistica</option>
+	  			{actividades && actividades.map(s => (
+	  			<option value={s.name}>
+                      {s.name}
+                </option>
+	  			))}
+  			</select>
             
-            
+        
             <select className="SelectContinent" name="continent" onChange={handleContinente}>
-			    <option value="">Filter by Continent</option>
-                <option value="All">All</option>
-			    <option value="Europe">Europe</option>
-			    <option value="Americas">Americas</option>
+			    <option value="">Filtrar por continente</option>
+			    <option value="Europe">Europa</option>
+			    <option value="Americas">America</option>
 			    <option value="Asia">Asia</option>
 			    <option value="Oceania">Oceania</option>
 			    <option value="Africa">Africa</option>

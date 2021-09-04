@@ -78,7 +78,7 @@ export const Activity = () => {
                         })}
                     </select>
             
-            <input type="submit"  value="Ok!" onSubmit={(e) => {
+            <input type="submit"  value="Ok!"  onSubmit={(e) => {
                dispatch(getActivities(input))
                 }}>
                 </input>
